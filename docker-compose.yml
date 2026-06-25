@@ -104,7 +104,7 @@ services:
       - "8443:443"
     expose:
       - "8080"
-   volumes:
+    volumes:
       - ${WEBGIS_DOCKER_SHARED_VOLUME}:/shared-volume
       - ${WEBGIS_DOCKER_SHARED_VOLUME}/var/www/.well-known:/var/www/.well-known
       - ${WEBGIS_DOCKER_SHARED_VOLUME}/certs/letsencrypt:/etc/letsencrypt:ro
