@@ -66,11 +66,11 @@ services:
     volumes:
       - ${WEBGIS_DOCKER_SHARED_VOLUME}:/shared-volume
       - ${WEBGIS_DOCKER_SHARED_VOLUME}/node_modules:/code/node_modules
-      - ./config/g3w-suite/overrides/static:/code/static:ro
-      - ./config/g3w-suite/overrides/templates:/code/templates:ro
-      - ./config/g3w-suite/settings_docker.py:/code/g3w-admin/base/settings/local_settings.py
-      - ./secrets/pg_service.conf:${PGSERVICEFILE}
-      - ./config/qgis/QGIS3.ini:/shared-volume/QGIS/QGIS3.ini
+      - /opt/g3w-suite/g3w-suite-docker/config/g3w-suite/overrides/static:/code/static:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/g3w-suite/overrides/templates:/code/templates:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/g3w-suite/settings_docker.py:/code/g3w-admin/base/settings/local_settings.py:ro
+      - /opt/g3w-suite/g3w-suite-docker/secrets/pg_service.conf:${PGSERVICEFILE}:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/qgis/QGIS3.ini:/shared-volume/QGIS/QGIS3.ini:ro
 
     networks:
       internal:
@@ -104,13 +104,13 @@ services:
       - "8443:443"
     expose:
       - "8080"
-    volumes:
+   volumes:
       - ${WEBGIS_DOCKER_SHARED_VOLUME}:/shared-volume
       - ${WEBGIS_DOCKER_SHARED_VOLUME}/var/www/.well-known:/var/www/.well-known
       - ${WEBGIS_DOCKER_SHARED_VOLUME}/certs/letsencrypt:/etc/letsencrypt:ro
-      - ./config/g3w-suite/overrides/static:/shared-volume/static/overrides:ro
-      - ./config/nginx:/etc/nginx/conf.d/:ro
-      - ./config/nginx/html:/var/www/html:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/g3w-suite/overrides/static:/shared-volume/static/overrides:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/nginx:/etc/nginx/conf.d/:ro
+      - /opt/g3w-suite/g3w-suite-docker/config/nginx/html:/var/www/html:ro
     logging:
       driver: "json-file"
       options:
