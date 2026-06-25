@@ -74,6 +74,7 @@ services:
 
     networks:
       internal:
+      gis-net:
 
   redis:
     image: redis:latest
@@ -99,8 +100,8 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8080:8080"
-      - "443:443"
+      - "8081:8080"
+      - "8443:443"
     expose:
       - "8080"
     volumes:
@@ -132,3 +133,5 @@ volumes:
 
 networks:
   internal:
+  gis-net:
+    external: true
